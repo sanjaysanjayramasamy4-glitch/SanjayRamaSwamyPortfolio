@@ -1418,6 +1418,7 @@
       position: relative;
       margin: 2rem 0;
     }
+
     @media (max-width: 768px) {
       .gallery-wrapper {
         height: 300px;
@@ -1441,8 +1442,6 @@
       width: 100%;
       height: 100%;
     }
-
-
   </style>
 
 </head>
@@ -1768,7 +1767,7 @@
       <div class="hobbies-grid">
         <div class="hobby-card r d1">
           <div class="hobby-img-wrap">
-            <img src="hobby_gaming_1777208332286.png" alt="Gaming">
+            <img src="./img/repo-game.jpg" alt="Gaming">
           </div>
           <h3>Gaming</h3>
           <p>Exploring immersive worlds and strategic gameplay. It fuels my problem-solving skills and creativity.</p>
@@ -2322,17 +2321,17 @@
             this.plane.program.uniforms.uViewportSizes.value = [this.viewport.width, this.viewport.height];
           }
         }
-        
+
         // Adjust scale based on screen orientation
         const isMobile = this.screen.width < 768;
         this.scale = isMobile ? this.screen.height / 1800 : this.screen.height / 1500;
-        
+
         this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
-        
+
         // On mobile, keep images relatively small
         const targetWidth = isMobile ? 600 : 700;
         this.plane.scale.x = (this.viewport.width * (targetWidth * this.scale)) / this.screen.width;
-        
+
         // Ensure the planes don't exceed a certain percentage of the viewport width on mobile
         if (isMobile) {
           const maxScaleX = this.viewport.width * 0.7;
@@ -2483,18 +2482,18 @@
         this.boundOnTouchDown = this.onTouchDown.bind(this);
         this.boundOnTouchMove = this.onTouchMove.bind(this);
         this.boundOnTouchUp = this.onTouchUp.bind(this);
-        
+
         window.addEventListener('resize', this.boundOnResize);
-        
+
         // Mouse wheel on the container only
         this.container.addEventListener('mousewheel', this.boundOnWheel, { passive: false });
         this.container.addEventListener('wheel', this.boundOnWheel, { passive: false });
-        
+
         // Interaction events on the container
         this.container.addEventListener('mousedown', this.boundOnTouchDown);
         this.container.addEventListener('mousemove', this.boundOnTouchMove);
         this.container.addEventListener('mouseup', this.boundOnTouchUp);
-        
+
         this.container.addEventListener('touchstart', this.boundOnTouchDown, { passive: true });
         this.container.addEventListener('touchmove', this.boundOnTouchMove, { passive: true });
         this.container.addEventListener('touchend', this.boundOnTouchUp);
@@ -2502,18 +2501,18 @@
       destroy() {
         window.cancelAnimationFrame(this.raf);
         window.removeEventListener('resize', this.boundOnResize);
-        
+
         this.container.removeEventListener('mousewheel', this.boundOnWheel);
         this.container.removeEventListener('wheel', this.boundOnWheel);
-        
+
         this.container.removeEventListener('mousedown', this.boundOnTouchDown);
         this.container.removeEventListener('mousemove', this.boundOnTouchMove);
         this.container.removeEventListener('mouseup', this.boundOnTouchUp);
-        
+
         this.container.removeEventListener('touchstart', this.boundOnTouchDown);
         this.container.removeEventListener('touchmove', this.boundOnTouchMove);
         this.container.removeEventListener('touchend', this.boundOnTouchUp);
-        
+
         if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
           this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas);
         }
